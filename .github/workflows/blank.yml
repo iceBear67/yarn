@@ -30,3 +30,15 @@ jobs:
         chmod +x ./gradlew
         ./gradlew yarn
         ls
+    - name: Artifact
+      run: |
+        mkdir _artifact
+        mv 1.15.2-intermediary.jar _artifact
+        mv 1.15.2-merged.jar _artifact
+        - name: Upload a Build Artifact
+    - uses: actions/upload-artifact@v2
+      with:
+      # Artifact name
+        name: 1.15.2s
+        # A file, directory or wildcard pattern that describes what to upload
+        path: _artifact
